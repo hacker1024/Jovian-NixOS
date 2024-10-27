@@ -15,8 +15,8 @@ in
             description = ''
               Whether to enable deckbd for initrd password entry.
 
-              You may need hold the option key for a second before entering your
-              password.
+              You must hold the menu button (≡) for a second before entering
+              your password.
             '';
           };
           bindsTo = lib.mkOption {
@@ -93,7 +93,7 @@ in
             environment.G_MESSAGES_DEBUG = lib.mkIf cfg.fde.deckbd.debug "all";
             # Note: The lizard_mode parameter does not work as intended. The
             # Steam Deck must also be manually put into gamepad mode by holding
-            # the option key for a second.
+            # the menu button (≡) for a second.
             preStart = "echo 0 > /sys/module/hid_steam/parameters/lizard_mode";
             script = "deckbd";
             postStop = "echo 1 > /sys/module/hid_steam/parameters/lizard_mode";
